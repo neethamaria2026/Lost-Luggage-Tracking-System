@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trackly | Luggage Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<header class="topbar">
+    <div class="brand">✈ Trackly</div>
+    <div class="staff-area">
+        <span>Staff Dashboard</span>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <div>
+            <p class="eyebrow">LOST LUGGAGE TRACKING SYSTEM</p>
+            <h1>Find it. Match it. Return it.</h1>
+            <p>Manage lost and found luggage reports in one place.</p>
+        </div>
+        <div class="hero-icon">🧳</div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-card">
+            <span>Total Reports</span>
+            <strong id="totalCount">0</strong>
+        </div>
+        <div class="stat-card">
+            <span>Lost</span>
+            <strong id="lostCount">0</strong>
+        </div>
+        <div class="stat-card">
+            <span>Found</span>
+            <strong id="foundCount">0</strong>
+        </div>
+        <div class="stat-card">
+            <span>Returned</span>
+            <strong id="returnedCount">0</strong>
+        </div>
+    </section>
+
+    <section class="panel">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">NEW REPORT</p>
+                <h2>Register Luggage</h2>
+            </div>
+            <span class="heading-icon">＋</span>
+        </div>
+
+        <form id="luggageForm">
+            <div class="form-grid">
+                <div class="field">
+                    <label for="owner">Passenger Name *</label>
+                    <input id="owner" type="text"
+                           placeholder="Enter passenger name" required>
+                </div>
+
+                <div class="field">
+                    <label for="luggage">Luggage Type *</label>
+                    <input id="luggage" type="text"
+                           placeholder="e.g. Suitcase, Backpack" required>
+                </div>
+
+                <div class="field">
+                    <label for="tagId">Luggage Tag ID (optional)</label>
+                    <input id="tagId" type="text"
+                           placeholder="e.g. AT782451">
+                </div>
+
+                <div class="field">
+                    <label for="tagImage">Tag Photo (optional)</label>
+                    <input id="tagImage" type="file" accept="image/*">
+                    <small>Photo is not saved in this demo.</small>
+                </div>
+
+                <div class="field">
+                    <label for="color">Luggage Colour *</label>
+                    <input id="color" type="text"
+                           placeholder="e.g. Blue, Black" required>
+                </div>
+
+                <div class="field">
+                    <label for="reportType">Report Type *</label>
+                    <select id="reportType" required>
+                        <option value="Lost">Lost Luggage</option>
+                        <option value="Found">Found Luggage</option>
+                    </select>
+                </div>
+
+                <div class="field full">
+                    <label for="location">Location *</label>
+                    <input id="location" type="text"
+                           placeholder="e.g. Terminal 2, Gate 3" required>
+                </div>
+
+                <div class="field full">
+                    <label for="details">Additional Details</label>
+                    <textarea id="details" rows="3"
+                              placeholder="Describe any identifying features"></textarea>
+                </div>
+            </div>
+
+            <button class="primary-btn" type="submit">
+                + Register Report
+            </button>
+            <p id="formMessage" class="form-message" role="status"></p>
+        </form>
+    </section>
+
+    <section class="panel">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">SMART SUGGESTIONS</p>
+                <h2>Possible Finds</h2>
+            </div>
+            <span class="heading-icon">✦</span>
+        </div>
+        <p class="muted">
+            Lost reports without a tag ID are compared with found luggage
+            using their descriptions.
+        </p>
+        <div id="possibleFindsList" class="record-list"></div>
+    </section>
+
+    <section class="panel">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">REPORT MANAGEMENT</p>
+                <h2>Luggage Reports</h2>
+            </div>
+        </div>
+
+        <input id="searchInput" class="search-input" type="search"
+               placeholder="Search by name, tag ID, luggage or location...">
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="All">All</button>
+            <button class="filter-btn" data-filter="Lost">Lost</button>
+            <button class="filter-btn" data-filter="Found">Found</button>
+            <button class="filter-btn" data-filter="Returned">Returned</button>
+        </div>
+
+        <div id="recordsList" class="record-list"></div>
+    </section>
+
+    <footer>
+        <p>Trackly · Lost Luggage Tracking System</p>
+    </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
